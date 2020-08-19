@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;600;700;800;900&display=swap');
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 4000px;
+}
+:root {
+    --primary-color: #0cc74a;
+    --primary-gradient-color-1: #07b664;
+    --primary-gradient-color-2: #0e643c;
+    --color-input: rgb(105, 105, 105);
+    --color-placeholder: rgb(168, 168, 168);
+    font-family: 'Overpass';
+}
