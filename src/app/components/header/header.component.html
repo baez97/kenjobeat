@@ -1,8 +1,9 @@
-<header class="green-curved-header">
-    <!-- <app-navbar></app-navbar> -->
-    <div class="header-content">
-        <h1>KenjoBeat</h1>
+<header>
+    <h1>Kenjo<span style="color: var(--primary-blue)">Beat</span></h1>
+    <div class="right-container">
         <app-global-search-bar></app-global-search-bar>
-        <p>El mejor registro de álbumes y artistas musicales</p>
+        <app-add-button (pressed)="toggleDropdown()"></app-add-button>
+        <app-add-dropdown [opened]="dropdownOpened" (close)="toggleDropdown()"></app-add-dropdown>
+        <img src="../../../assets/curved-header.svg" class="header-background"/>
     </div>
 </header>

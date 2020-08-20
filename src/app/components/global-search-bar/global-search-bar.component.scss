@@ -1,25 +1,26 @@
 .global-search-bar {
-    width: 200px;
-    height: 60px;
-    padding: 15px 80px;
-    margin: 20px auto;
+    width: 180px;
+    height: 50px;
+    padding: 15px 10px 15px 80px;
     border-radius: 5px;
     border: none;
 
     color: rgba(0,0,0,0);
-    font-weight: 900;
-    caret-color: var(--primary-gradient-color-2);
-    font-size: 20px;
+    font-weight: 600;
+    caret-color: var(--primary-gray);
+    font-size: 17px;
     
-    background: url(../../../assets/search.png) no-repeat 30px;
+    background: url(../../../assets/search-gray.png) no-repeat 30px;
     background-size: 30px 30px;
-    background-position-x: 80px;
+    background-position-x: 75px;
     background-color: white;
 
     transition: .5s;
     cursor: pointer;
+    text-overflow: ellipsis;
 
     box-shadow: 0px 10px 40px rgba(0,0,0,.2);
+    margin-right: 20px;
     &::placeholder {
         color: rgba(0,0,0,0);
         transition: .5s;
@@ -28,7 +29,8 @@
     &:focus, &:hover {
         outline: none;
         color: var(--color-input);
-        width: 600px;
+        width: 40vw;
+        // max-width: 500px;
         background: url(../../../assets/search-inactive.png) no-repeat 30px;
         background-size: 30px 30px;
         background-position-x: 30px;

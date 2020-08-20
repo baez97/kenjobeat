@@ -1,0 +1,29 @@
+.add-button {
+    border-radius: 5px;
+    padding: 16px 30px;
+    height: 50px;
+    width: 100px;
+    color: var(--primary-gray);
+    font-weight: 900;
+    background: url(../../../assets/add.svg) no-repeat;
+    background-color: var(--primary-blue);
+    background-position: center;
+    background-size: 30px 30px;
+    
+    cursor: pointer;
+    border: none;
+
+    color: rgba(0,0,0,0);
+    transition: .5s;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover, &:focus {
+        width: 150px;
+        padding-left: 50px;
+        background-position: 20px center;
+        color: var(--primary-gray);
+    }
+}

@@ -13,6 +13,8 @@ import { NbSearchModule } from '@nebular/theme'
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { GlobalSearchBarComponent } from './components/global-search-bar/global-search-bar.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
+import { AddDropdownComponent } from './components/add-dropdown/add-dropdown.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ListItemComponent } from './components/list-item/list-item.component';
     ListComponent,
     NavbarComponent,
     GlobalSearchBarComponent,
-    ListItemComponent
+    ListItemComponent,
+    AddDropdownComponent,
+    AddButtonComponent
   ],
   imports: [
     BrowserModule,
