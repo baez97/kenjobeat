@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (filter)="setFilter($event)"></app-header>
 <div id="app-content" style="padding-top: 100px">
-    <app-list></app-list>
+    <app-list [filter]="filter"></app-list>
 </div>

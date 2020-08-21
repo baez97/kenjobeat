@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-global-search-bar',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalSearchBarComponent implements OnInit {
 
+  @Output('filter') filter = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setFilter(event) {
+    this.filter.emit(event);
+  }
 }

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kenjobeat';
+  filter: string;
+
+  setFilter(value) {
+    this.filter = value;
+  }
 }

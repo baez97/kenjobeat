@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output('filter') filter = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
@@ -39,5 +40,9 @@ export class HeaderComponent implements OnInit {
 
   toggleDropdown() {
     this.dropdownOpened = !this.dropdownOpened;
+  }
+
+  setFilter(filter) {
+    this.filter.emit(filter);
   }
 }

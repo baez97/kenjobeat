@@ -1,3 +1,14 @@
+<h2 *ngIf="filteredAlbums.length">Álbumes</h2>
 <div class="list">
-    <app-list-item *ngFor="let album of albums" [album]="album"></app-list-item>
+    <app-list-item *ngFor="let album of filteredAlbums" 
+        [title]="album.title"
+        [photoUrl]="album.coverUrl"
+        [subtitle]="album.artist.name"></app-list-item>
+</div>
+<h2 *ngIf="filteredArtists.length">Artistas</h2>
+<div class="list">
+    <app-list-item *ngFor="let artist of filteredArtists" 
+        [title]="artist.name"
+        [photoUrl]="artist.photoUrl"></app-list-item>
+    <h1 class="not-found" *ngIf="!filteredArtists.length && !filteredAlbums.length">No hay albumes ni artistas con ese nombre :(</h1>
 </div>

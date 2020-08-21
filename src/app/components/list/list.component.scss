@@ -1,6 +1,16 @@
 .list {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+
+    .not-found {
+        color: #ccc;
+        font-size: 40px;
+    }
+
+}
+h2 {
+    color: var(--primary-gray);
+    text-align: center;
 }

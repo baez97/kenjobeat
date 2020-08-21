@@ -9,10 +9,10 @@ export class ListItemComponent implements OnInit {
 
   constructor() { }
 
-  @Input('album') album;
+  @Input('title') title: string;
+  @Input('subtitle') subtitle: string;
+  @Input('photoUrl') photoUrl: string;
   
-  ngOnInit(): void {
-    console.log(this.album);
-  }
+  ngOnInit(): void { }
 
 }

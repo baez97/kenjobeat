@@ -30,7 +30,8 @@
     }
     .title {
         font-weight: 900;
-        font-size: 17px;
+        font-size: 18px;
+        margin-bottom: 5px;
     }
 
     .artist {
@@ -38,6 +39,7 @@
         font-size: 5px;
         opacity: 0;
         transition: .2s;
+        color: #ccc;
     }
 
     &:hover {
@@ -47,7 +49,7 @@
 
     &:hover .artist {
         opacity: 1;
-        font-size: 15px;
+        font-size: 14px;
         height: auto;
     }
 }
