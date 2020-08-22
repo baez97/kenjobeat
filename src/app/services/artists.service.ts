@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArtistsService {
 
-  baseUrl = 'http://localhost:3000'
+  // baseUrl = 'http://localhost:3000'
+  baseUrl = 'http://192.168.1.128:3000';
+
 
   constructor(private httpClient: HttpClient) { }
 

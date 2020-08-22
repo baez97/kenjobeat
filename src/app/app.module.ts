@@ -15,6 +15,11 @@ import { GlobalSearchBarComponent } from './components/global-search-bar/global-
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddDropdownComponent } from './components/add-dropdown/add-dropdown.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { AlbumModalComponent } from './components/album-modal/album-modal.component';
+import { ArtistModalComponent } from './components/artist-modal/artist-modal.component';
+import { AlbumListComponent } from './components/album-list/album-list.component';
+import { AlbumListItemComponent } from './components/album-list-item/album-list-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     GlobalSearchBarComponent,
     ListItemComponent,
     AddDropdownComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    ModalComponent,
+    AlbumModalComponent,
+    ArtistModalComponent,
+    AlbumListComponent,
+    AlbumListItemComponent
   ],
   imports: [
     BrowserModule,

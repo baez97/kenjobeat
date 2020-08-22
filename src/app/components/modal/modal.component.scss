@@ -1,0 +1,79 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.modal {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(150,150,150,.3);
+    z-index: 21;
+    transition: .5s ease;
+    overflow: hidden;
+}
+
+.modal-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.2);
+}
+
+.closed.modal-container {
+    z-index: -3;
+}
+
+.closed.modal {
+    width: 450px;
+    height: 550px;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.closed.modal-back {
+    background-color: rgba(0,0,0,0);
+}
+
+.album.modal {
+    height: 200px;
+}
+
+.inner-modal {
+    position: absolute;
+    overflow: hidden;
+    transition: .5s ease;
+}
+
+app-album-modal {
+    transform: translateX(500px);
+}
+
+app-artist-modal {
+    transform: translateX(-500px);
+}
+
+.show {
+    transform: translateX(0%);
+    transition: .5s ease;
+}
+
+@media(max-width: 767px) {
+    .modal {
+        width: 90vw;
+        border-radius: 10px;
+    }
+
+    .closed.modal {
+        width: 80vw;
+    }
+}

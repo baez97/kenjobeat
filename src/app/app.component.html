@@ -1,4 +1,7 @@
 <app-header (filter)="setFilter($event)"></app-header>
-<div id="app-content" style="padding-top: 100px">
-    <app-list [filter]="filter"></app-list>
+<div id="app-content">
+    <app-list (openModal)="openModal($event)" [filter]="filter"></app-list>
+    <app-modal [open]="modalOpened" (close)="closeModal()"
+        [album]="openedAlbum"
+        [artist]="openedArtist"></app-modal>
 </div>

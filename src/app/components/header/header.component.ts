@@ -12,19 +12,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     document.documentElement.scrollTop = 0;
-    window.onscroll = this.onScrollFn;
+    // window.onscroll = this.onScrollFn;
   }
 
   dropdownOpened = false;
   
   onScrollFn() {
-    // if (  document.documentElement.scrollTop > 80 ) {
-    //   document.getElementsByClassName('header-content')[0].id = 'compressed-header-content';
-    //   document.getElementsByClassName('green-curved-header')[0].id = 'compressed-header';
-    // } else {
-    //   document.getElementsByClassName('header-content')[0].id = '';
-    //   document.getElementsByClassName('green-curved-header')[0].id = '';
-    // }
     const scrollTop = document.documentElement.scrollTop;
     if ( scrollTop < 250 ) {
       (<HTMLElement>document.getElementsByClassName('green-curved-header')[0])

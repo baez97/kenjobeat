@@ -1,0 +1,11 @@
+<div class="modal-container" [ngClass]="{closed: !open}">
+    <div class="modal" [ngClass]="{closed: !open, album: currentIsAlbum}">
+        <app-album-modal *ngIf="album" [album]="album" 
+            class="inner-modal" [ngClass]="{ show: currentIsAlbum }"></app-album-modal>
+        <app-artist-modal *ngIf="artist" [artist]="artist" 
+            class="inner-modal" [ngClass]="{ show: !currentIsAlbum }"
+            (toggle)="toggleToAlbum($event)"></app-artist-modal>
+    </div>
+    <!-- <button (click)="toggle()" style="z-index: 50">Toggle!</button> -->
+    <div class="modal-back" [ngClass]="{closed: !open}" (click)="closeModal()"></div>
+</div>

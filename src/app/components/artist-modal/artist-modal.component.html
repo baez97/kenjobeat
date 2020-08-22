@@ -1,0 +1,21 @@
+<div *ngIf="artist" class="artist-modal">
+    <img [src]="artist.photoUrl"/>
+    <div class="modal-content">
+        <h1>{{ artist.name }}</h1>
+        <div class="dates-container">
+            <div class="date" *ngIf="artist.birthdate">
+                <span style="font-weight: 900">Nacimiento: </span>
+                {{ artist.birthdate | date }}
+            </div>
+            <div class="date">
+                <span style="font-weight: 900">Fallecimiento: </span>
+                Jan 1, 2013
+            </div>
+            <div class="date" *ngIf="artist.deathdate">
+                <span style="font-weight: 900">Fallecimiento: </span>
+                {{ artist.deathdate | date }}
+            </div>
+        </div>
+        <app-album-list [albums]="albums" (itemPressed)="toggle($event)"></app-album-list>
+    </div>
+</div>

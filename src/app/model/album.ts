@@ -9,3 +9,9 @@ export interface Album {
     year: number,
     genre: string
 }
+
+
+// Type Guard
+export function isAlbum(item: Artist | Album): item is Album {
+    return (item as Album).coverUrl !== undefined;
+}

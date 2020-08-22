@@ -10,7 +10,6 @@
 body, html {
     padding: 0;
     margin: 0;
-    height: 4000px;
 }
 :root {
     --primary-blue: #78d0d3;
@@ -20,5 +19,7 @@ body, html {
     --color-button-primary: rgb(20, 121, 216);
     --color-input: rgb(105, 105, 105);
     --color-placeholder: rgb(168, 168, 168);
+    --modal-width: 500px;
+    --modal-mobile-width: 90%;
     font-family: 'Overpass';
 }

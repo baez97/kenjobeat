@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AlbumsService } from 'src/app/services/albums.service';
 import { Album } from 'src/app/model/Album';
 import { Artist } from 'src/app/model/artist';
@@ -16,24 +16,27 @@ export class ListComponent implements OnInit {
   albums: Array<Album>;
   artists: Array<Artist>;
 
-  filteredAlbums: Array<Album>;
-  filteredArtists: Array<Artist>;
+  filteredAlbums: Array<Album> = [];
+  filteredArtists: Array<Artist> = [];
 
   filter: string;
 
   @Input('filter') set setFilter(filter: string) {
-    this.filter = filter;
+    this.filter = filter.toLowerCase();
     if ( !this.albums || !this.artists )
       return;
     console.log('setting it!', filter);
     this.filteredAlbums = this.albums.filter(album => {
-      return album.title.includes(filter) || album.artist.name.includes(filter);
+      return album.title.toLowerCase().includes(this.filter) || 
+             album.artist.name.toLowerCase().includes(this.filter);
     });
 
     this.filteredArtists = this.artists.filter(artist => {
-      return artist.name.includes(filter);
+      return artist.name.toLowerCase().includes(this.filter);
     });
   }
+
+  @Output('openModal') openModalEvent = new EventEmitter<Artist | Album>();
 
   async ngOnInit() {
     this.artists = await this.artistsService.getAllArtists();
@@ -41,5 +44,9 @@ export class ListComponent implements OnInit {
     this.filteredAlbums = JSON.parse(JSON.stringify(this.albums));
     this.filteredArtists = JSON.parse(JSON.stringify(this.artists));
     console.log(this.albums);
+  }
+
+  openModal(item: Artist | Album) {
+    this.openModalEvent.emit(item);
   }
 }

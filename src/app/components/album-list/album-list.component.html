@@ -1,0 +1,3 @@
+<div class="album-list">
+    <app-album-list-item *ngFor="let album of albums" [album]="album" (pressed)="itemPressed($event)"></app-album-list-item>
+</div>

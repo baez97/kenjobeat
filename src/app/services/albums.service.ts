@@ -11,7 +11,8 @@ export class AlbumsService {
 
   constructor(private http: HttpClient, private artistsService: ArtistsService) { }
 
-  baseUrl = 'http://localhost:3000'
+  // baseUrl = 'http://localhost:3000'
+  baseUrl = 'http://192.168.1.128:3000';
 
   async getAllAlbums(artists: Array<Artist>): Promise<Array<Album>> {
     const albumsResponse = await this.http.get(this.baseUrl + '/albums/all').toPromise();
