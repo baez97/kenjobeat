@@ -12,9 +12,16 @@ import { ArtistsService } from 'src/app/services/artists.service';
 export class ListComponent implements OnInit {
 
   constructor(private albumsService: AlbumsService, private artistsService: ArtistsService) { }
-
   albums: Array<Album>;
   artists: Array<Artist>;
+  @Input('albums') set setAlbums(value: Array<Album>) {
+    this.albums = value || [];
+    this.filteredAlbums = JSON.parse(JSON.stringify(this.albums));
+  }
+  @Input('artists') set setArtists(value: Array<Artist>) {
+    this.artists = value || [];
+    this.filteredArtists = JSON.parse(JSON.stringify(this.artists));
+  }
 
   filteredAlbums: Array<Album> = [];
   filteredArtists: Array<Artist> = [];
@@ -22,10 +29,9 @@ export class ListComponent implements OnInit {
   filter: string;
 
   @Input('filter') set setFilter(filter: string) {
-    this.filter = filter.toLowerCase();
+    this.filter = filter ? filter.toLowerCase() : '';
     if ( !this.albums || !this.artists )
       return;
-    console.log('setting it!', filter);
     this.filteredAlbums = this.albums.filter(album => {
       return album.title.toLowerCase().includes(this.filter) || 
              album.artist.name.toLowerCase().includes(this.filter);
@@ -38,12 +44,15 @@ export class ListComponent implements OnInit {
 
   @Output('openModal') openModalEvent = new EventEmitter<Artist | Album>();
 
-  async ngOnInit() {
-    this.artists = await this.artistsService.getAllArtists();
-    this.albums = await this.albumsService.getAllAlbums(this.artists);
+  ngOnInit() {
+    this.retrieveAlbums();
+  }
+  
+  retrieveAlbums() {
+    // this.artists = await this.artistsService.getAllArtists();
+    // this.albums = await this.albumsService.getAllAlbums(this.artists);
     this.filteredAlbums = JSON.parse(JSON.stringify(this.albums));
     this.filteredArtists = JSON.parse(JSON.stringify(this.artists));
-    console.log(this.albums);
   }
 
   openModal(item: Artist | Album) {

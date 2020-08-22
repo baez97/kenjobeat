@@ -1,3 +1,33 @@
 <div *ngIf="album" class="album-modal">
-    <h1>{{ album.title }}</h1>
+    <img [src]="album.coverUrl" onerror="this.src='../../../assets/album.svg'"/>
+    <div *ngIf="mode === 'read'" class="modal-content">
+        <h1>{{ album.title }}</h1>
+        <div *ngIf="album.artist" class="artist">{{ album.artist.name }}</div>
+        <div class="year-genre-container">
+            <div class="year">{{ album.year }}</div>
+            <div class="genre">{{ album.genre }}</div>
+        </div>
+        <div class="buttons-container">
+            <div class="button back with-image" (click)="toggle()"></div>
+            <div class="button edit with-image"></div>
+            <div class="button delete with-image"></div>
+        </div>
+    </div>
+    
+    <div *ngIf="mode === 'create'" class="modal-content">
+        <form [formGroup]="albumForm">
+            <input type="text" for="title" formControlName="title" placeholder="Título"/>
+            <input type="text" for="coverUrl" formControlName="coverUrl" placeholder="URL de imágen"/>
+            <input type="text" for="artist" formControlName="artistId" placeholder="Artista" 
+                list="possibleArtists" (input)="applyFilter($event.target.value)"/>
+            <datalist id="possibleArtists">
+                <option *ngFor="let artist of filteredArtists" [value]="artist.name"></option>
+             </datalist>
+             <div class="year-genre-form-container">
+                 <input type="number" for="year" formControlName="year" placeholder="Año"/>
+                 <input type="text" for="genre" formControlName="genre" placeholder="Género"/>
+             </div>
+            <button [disabled]="albumForm.invalid || !artistIsValid" (click)="createAlbum()">{{ mode | editCreate:'album'}}</button>
+        </form>
+    </div>
 </div>

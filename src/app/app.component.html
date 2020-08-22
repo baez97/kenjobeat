@@ -1,7 +1,14 @@
-<app-header (filter)="setFilter($event)"></app-header>
+<app-header (filter)="setFilter($event)"
+    (createAlbum)="createAlbumPressed()" (createArtist)="createArtistPressed()"></app-header>
 <div id="app-content">
-    <app-list (openModal)="openModal($event)" [filter]="filter"></app-list>
+    <app-list (openModal)="openModal($event)" 
+        [filter]="filter" [albums]="albums" [artists]="artists"></app-list>
     <app-modal [open]="modalOpened" (close)="closeModal()"
         [album]="openedAlbum"
-        [artist]="openedArtist"></app-modal>
+        [artist]="openedArtist"
+        (toggleToAlbum)="toggleToAlbum($event)"
+        (toggleToArtist)="toggleToArtist($event)"
+        [mode]="mode"
+        (createAlbum)="createAlbum($event)"
+        (createArtist)="createArtist($event)"></app-modal>
 </div>

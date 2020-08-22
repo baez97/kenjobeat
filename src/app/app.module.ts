@@ -20,6 +20,8 @@ import { AlbumModalComponent } from './components/album-modal/album-modal.compon
 import { ArtistModalComponent } from './components/artist-modal/artist-modal.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { AlbumListItemComponent } from './components/album-list-item/album-list-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditCreatePipe } from './pipes/edit-create.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AlbumListItemComponent } from './components/album-list-item/album-list-
     AlbumModalComponent,
     ArtistModalComponent,
     AlbumListComponent,
-    AlbumListItemComponent
+    AlbumListItemComponent,
+    EditCreatePipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { AlbumListItemComponent } from './components/album-list-item/album-list-
     NbLayoutModule,
     NbEvaIconsModule,
     NbSearchModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

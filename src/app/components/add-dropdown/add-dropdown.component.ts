@@ -11,9 +11,18 @@ export class AddDropdownComponent implements OnInit {
 
   @Input('opened') opened;
   @Output() close = new EventEmitter();
+  @Output('createAlbum') createAlbumEvent = new EventEmitter();
+  @Output('createArtist') createArtistEvent = new EventEmitter();
   ngOnInit(): void {
   }
 
   closeDropdown() { this.close.emit(); }
 
+  createAlbum() {
+    this.createAlbumEvent.emit();
+  }
+
+  createArtist() {
+    this.createArtistEvent.emit();
+  }
 }

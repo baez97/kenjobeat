@@ -25,4 +25,9 @@ export class ArtistsService {
 
     return artists;
   }
+
+  async findArtistById(id: string): Promise<Artist> {
+    const result = await this.httpClient.get(this.baseUrl + '/artist/' + id).toPromise();
+    return result as Artist;
+  }
 }

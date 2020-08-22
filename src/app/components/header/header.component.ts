@@ -8,6 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output('filter') filter = new EventEmitter<string>();
+  @Output('createAlbum') createAlbumEvent = new EventEmitter();
+  @Output('createArtist') createArtistEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -37,5 +39,14 @@ export class HeaderComponent implements OnInit {
 
   setFilter(filter) {
     this.filter.emit(filter);
+  }
+
+  createAlbum() { 
+    this.toggleDropdown();
+    this.createAlbumEvent.emit();
+  }
+  createArtist() { 
+    this.toggleDropdown();
+    this.createArtistEvent.emit();
   }
 }

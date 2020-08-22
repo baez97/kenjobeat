@@ -1,5 +1,5 @@
 <div class="dropdown" *ngIf="opened">
-    <div class="dropdown-item album">Nuevo Album</div>
-    <div class="dropdown-item artist">Nuevo Artista</div>
+    <div class="dropdown-item album"  (click)="createAlbum()">Nuevo Album</div>
+    <div class="dropdown-item artist" (click)="createArtist()">Nuevo Artista</div>
 </div>
 <div class="dropdown-back" *ngIf="opened" (click)="closeDropdown()"></div>

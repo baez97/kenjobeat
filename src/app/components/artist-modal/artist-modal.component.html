@@ -7,10 +7,6 @@
                 <span style="font-weight: 900">Nacimiento: </span>
                 {{ artist.birthdate | date }}
             </div>
-            <div class="date">
-                <span style="font-weight: 900">Fallecimiento: </span>
-                Jan 1, 2013
-            </div>
             <div class="date" *ngIf="artist.deathdate">
                 <span style="font-weight: 900">Fallecimiento: </span>
                 {{ artist.deathdate | date }}

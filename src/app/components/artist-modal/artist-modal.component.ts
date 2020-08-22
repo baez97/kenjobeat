@@ -8,15 +8,16 @@ import { Album } from 'src/app/model/Album';
   templateUrl: './artist-modal.component.html',
   styleUrls: ['./artist-modal.component.scss']
 })
-export class ArtistModalComponent implements OnInit {
-  @Input('artist') artist: Artist;
+export class ArtistModalComponent {
+  artist: Artist;
+  @Input('artist') set setArtist(value: Artist) {
+    this.artist = value;
+    this.albumsService.getAlbumsFromArtist(this.artist._id)
+      .then(result => this.albums = result);
+  }
   @Output('toggle') toggleEvent = new EventEmitter<Album>();
   albums: Array<Album>
   constructor(private albumsService: AlbumsService) { }
-
-  async ngOnInit() {
-    this.albums = await this.albumsService.getAllAlbums([]);
-  }
 
   toggle(album: Album) {
     this.toggleEvent.emit(album);

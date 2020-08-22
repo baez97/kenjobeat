@@ -45,12 +45,13 @@
 }
 
 .album.modal {
-    height: 200px;
+    height: 300px;
 }
 
 .inner-modal {
     position: absolute;
     overflow: hidden;
+    width: 100%;
     transition: .5s ease;
 }
 
@@ -75,5 +76,9 @@ app-artist-modal {
 
     .closed.modal {
         width: 80vw;
+    }
+
+    .album.modal {
+        height: 500px;
     }
 }

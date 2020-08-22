@@ -14,7 +14,7 @@ export class AlbumsService {
   // baseUrl = 'http://localhost:3000'
   baseUrl = 'http://192.168.1.128:3000';
 
-  async getAllAlbums(artists: Array<Artist>): Promise<Array<Album>> {
+  async getAllAlbums(artists?: Array<Artist>): Promise<Array<Album>> {
     const albumsResponse = await this.http.get(this.baseUrl + '/albums/all').toPromise();
     const albums: Array<Album> = (albumsResponse as Array<any>).map(res => ({
       _id: res._id,
@@ -26,8 +26,22 @@ export class AlbumsService {
       artist: res.artist
     }));
 
+    if ( !artists )
+      return albums;
+
     const albumsWithArtist = this.mapArtistsIntoAlbums(artists, albums);
     return albumsWithArtist;
+  }
+
+  async getAlbumsFromArtist(id: string): Promise<Array<Album>> {
+    const allAlbums = await this.getAllAlbums();
+    const artistAlbums = allAlbums.filter(album => album.artistId === id);
+    return artistAlbums;
+  }
+
+  async createAlbum(album: Album): Promise<Album> {
+    const result = await this.http.post(this.baseUrl + '/album', album).toPromise();
+    return result as Album;
   }
 
   mapArtistsIntoAlbums(artists, albums) {
