@@ -44,6 +44,12 @@ export class AlbumsService {
     return result as Album;
   }
 
+  async editAlbum(album: Album): Promise<Album> {
+    delete album.artist;
+    const result = await this.http.put(this.baseUrl + '/album/' + album._id, album).toPromise();
+    return result as Album;
+  }
+
   mapArtistsIntoAlbums(artists, albums) {
     const artistsMap = {};
     artists.forEach(artist => artistsMap[artist._id] = artist);

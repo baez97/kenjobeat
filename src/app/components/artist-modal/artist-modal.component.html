@@ -1,17 +1,39 @@
 <div *ngIf="artist" class="artist-modal">
-    <img [src]="artist.photoUrl"/>
-    <div class="modal-content">
+    <img [src]="artist.photoUrl" onerror="this.src='../../../assets/album.svg'"/>
+    <div class="buttons-container">
+        <button class="edit top-button" (click)="editPressed()"></button>
+        <button class="delete top-button"></button>
+    </div>
+    <div *ngIf="mode === 'read'" class="modal-content">
         <h1>{{ artist.name }}</h1>
         <div class="dates-container">
             <div class="date" *ngIf="artist.birthdate">
                 <span style="font-weight: 900">Nacimiento: </span>
                 {{ artist.birthdate | date }}
             </div>
-            <div class="date" *ngIf="artist.deathdate">
+            <div class="date" *ngIf="artist.deathDate">
                 <span style="font-weight: 900">Fallecimiento: </span>
-                {{ artist.deathdate | date }}
+                {{ artist.deathDate | date }}
             </div>
         </div>
         <app-album-list [albums]="albums" (itemPressed)="toggle($event)"></app-album-list>
+    </div>
+
+    <div *ngIf="mode === 'create' || mode === 'edit'" class="modal-content">
+        <form [formGroup]="artistForm">
+            <input type="text" for="name" formControlName="name" placeholder="Nombre">
+            <input type="text" for="photoUrl" formControlName="photoUrl" placeholder="URL de foto"/>
+            <div class="dates-form-container">
+                <div class="label-date-container">
+                    <label for="birthdate">Nacimiento</label>
+                    <input type="date" for="birthdate" formControlName="birthdate" placeholder="Nacimiento"/>
+                </div>
+                <div class="label-date-container">
+                    <label for="deathDate">Fallecimiento</label>
+                    <input type="date" for="deathDate" formControlName="deathDate" placeholder="Fallecimiento"/>
+                </div>
+            </div>
+            <button [disabled]="artistForm.invalid" (click)="submit()">{{ mode | editCreate:'artist'}}</button>
+        </form>
     </div>
 </div>

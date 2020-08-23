@@ -5,6 +5,6 @@ export interface Artist {
     name: string,
     photoUrl: string,
     birthdate: string,
-    deathdate: string,
+    deathDate: string,
     albums?: Array<Album>
 }

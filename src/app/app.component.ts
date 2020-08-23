@@ -52,7 +52,7 @@ export class AppComponent implements OnInit{
     if ( itemType === 'album' )
       this.openedAlbum = { genre: '', year: 0, coverUrl: '', title: '', _id: '' };
     else
-      this.openedArtist = { _id: '', birthdate: '', deathdate: '', name: '', photoUrl: '' };
+      this.openedArtist = { _id: '', birthdate: '', deathDate: '', name: '', photoUrl: '' };
     this.modalOpened = true;
   }
 
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit{
     this.modalOpened = false;
   }
 
-  toggleToAlbum(item: Album) {
+  async toggleToAlbum(item: Album) {
     this.openModal(item);
   }
 
@@ -75,8 +75,18 @@ export class AppComponent implements OnInit{
     this.openCreationModal('album')
   }
 
+  editAlbumPressed(album: Album) {
+    this.openedAlbum = this.albums.find(al => al._id === album._id);
+    this.mode = 'edit';
+  }
+
   createArtistPressed() {
     this.openCreationModal('artist')
+  }
+
+  editArtistPressed(artist: Artist) {
+    this.openedArtist = artist;
+    this.mode = 'edit';
   }
 
   async createAlbum(album) {
@@ -85,8 +95,21 @@ export class AppComponent implements OnInit{
     this.closeModal();
   }
 
-  createArtist(artist) {
-    console.log(artist);
+  async createArtist(artist) {
+    await this.artistsService.createArtist(artist);
+    this.retrieveData();
+    this.closeModal();
+  }
+
+  async editAlbum(album: Album) {
+    await this.albumsService.editAlbum(album);
+    this.retrieveData();
+    this.closeModal();
+  }
+
+  async editArtist(artist: Artist) {
+    await this.artistsService.editArtist(artist);
+    this.retrieveData();
     this.closeModal();
   }
 }

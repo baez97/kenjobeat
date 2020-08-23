@@ -14,7 +14,6 @@ export class ModalComponent implements OnInit {
 
   artist: Artist;
   @Input('artist') set setArtist(value: Artist) {
-    console.log('You are setting the artist!', value);
     if ( value ) {
       this.artist = value;
       this.currentIsAlbum = false;
@@ -23,7 +22,6 @@ export class ModalComponent implements OnInit {
 
   album: Album;
   @Input('album') set setAlbum(value: Album) {
-    console.log('You are setting the album!', value);
     if ( value ) {
       this.album = value;
       this.currentIsAlbum = true;
@@ -35,6 +33,11 @@ export class ModalComponent implements OnInit {
   @Output('toggleToAlbum') toggleToAlbumEvent = new EventEmitter<Album>();
   @Output('createArtist') createArtistEvent = new EventEmitter<Artist>();
   @Output('createAlbum') createAlbumEvent = new EventEmitter<Album>();
+  @Output('editArtistPressed') editArtistPressedEvent = new EventEmitter<Artist>();
+  @Output('editAlbumPressed') editAlbumPressedEvent = new EventEmitter<Album>();
+  @Output('editAlbum') editAlbumEvent = new EventEmitter<Album>();
+  @Output('editArtist') editArtistEvent = new EventEmitter<Artist>();
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -58,5 +61,22 @@ export class ModalComponent implements OnInit {
 
   createAlbum(album: Album) {
     this.createAlbumEvent.emit(album)
+  }
+
+  editArtistPressed(artist: Artist) {
+    this.editArtistPressedEvent.emit(artist)
+  }
+
+  editAlbumPressed(album: Album) {
+    this.editAlbumPressedEvent.emit(album);
+  }
+
+  editAlbum(album: Album) {
+    this.editAlbumEvent.emit(album)
+  }
+
+  editArtist(artist: Artist) {
+    console.log('modal');
+    this.editArtistEvent.emit(artist);
   }
 }

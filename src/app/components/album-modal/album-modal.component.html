@@ -9,12 +9,12 @@
         </div>
         <div class="buttons-container">
             <div class="button back with-image" (click)="toggle()"></div>
-            <div class="button edit with-image"></div>
+            <div class="button edit with-image" (click)="editPressed()"></div>
             <div class="button delete with-image"></div>
         </div>
     </div>
     
-    <div *ngIf="mode === 'create'" class="modal-content">
+    <div *ngIf="mode === 'create' || mode === 'edit'" class="modal-content">
         <form [formGroup]="albumForm">
             <input type="text" for="title" formControlName="title" placeholder="Título"/>
             <input type="text" for="coverUrl" formControlName="coverUrl" placeholder="URL de imágen"/>
@@ -27,7 +27,7 @@
                  <input type="number" for="year" formControlName="year" placeholder="Año"/>
                  <input type="text" for="genre" formControlName="genre" placeholder="Género"/>
              </div>
-            <button [disabled]="albumForm.invalid || !artistIsValid" (click)="createAlbum()">{{ mode | editCreate:'album'}}</button>
+            <button [disabled]="albumForm.invalid || !artistIsValid" (click)="submit()">{{ mode | editCreate:'album'}}</button>
         </form>
     </div>
 </div>

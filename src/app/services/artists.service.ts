@@ -20,7 +20,7 @@ export class ArtistsService {
       name: res.name,
       photoUrl: res.photoUrl,
       birthdate: res.birthdate,
-      deathdate: res.deathdate
+      deathDate: res.deathDate
     }));
 
     return artists;
@@ -28,6 +28,16 @@ export class ArtistsService {
 
   async findArtistById(id: string): Promise<Artist> {
     const result = await this.httpClient.get(this.baseUrl + '/artist/' + id).toPromise();
+    return result as Artist;
+  }
+
+  async createArtist(artist: Artist): Promise<Artist> {
+    const result = await this.httpClient.post(this.baseUrl + '/artist', artist).toPromise();
+    return result as Artist;
+  }
+
+  async editArtist(artist: Artist): Promise<Artist> {
+    const result = await this.httpClient.put(this.baseUrl + '/artist/' + artist._id, artist).toPromise();
     return result as Artist;
   }
 }

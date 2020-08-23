@@ -12,6 +12,5 @@
         [title]="artist.name"
         [photoUrl]="artist.photoUrl"
         (click)="openModal(artist)"></app-list-item>
-    <h1 class="not-found" *ngIf="!filteredArtists.length && !filteredAlbums.length">No se han encontrado álbumes ni artistas</h1>
-    <h1 class="not-found" *ngIf="!filteredArtists.length && !filteredAlbums.length">:(</h1>
+    <h1 class="not-found" *ngIf="!filteredArtists.length && !filteredAlbums.length">No se han encontrado álbumes ni artistas<br>:(</h1>
 </div>

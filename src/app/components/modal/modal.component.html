@@ -3,11 +3,15 @@
         <app-album-modal *ngIf="album" [album]="album" 
             class="inner-modal" [ngClass]="{ show: currentIsAlbum }"
             (toggle)="toggleToArtist($event)" [mode]="mode"
-            (createAlbum)="createAlbum($event)"></app-album-modal>
+            (createAlbum)="createAlbum($event)"
+            (editPressed)="editAlbumPressed($event)"
+            (editAlbum)="editAlbum($event)"></app-album-modal>
         <app-artist-modal *ngIf="artist" [artist]="artist" 
             class="inner-modal" [ngClass]="{ show: !currentIsAlbum }"
-            (toggle)="toggleToAlbum($event)"
-            (createArtist)="createArtist($event)"></app-artist-modal>
+            (toggle)="toggleToAlbum($event)" [mode]="mode"
+            (createArtist)="createArtist($event)"
+            (editPressed)="editArtistPressed($event)"
+            (editArtist)="editArtist($event)"></app-artist-modal>
     </div>
     <div class="modal-back" [ngClass]="{closed: !open}" (click)="closeModal()"></div>
 </div>

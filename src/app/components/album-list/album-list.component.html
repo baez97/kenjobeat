@@ -1,3 +1,4 @@
 <div class="album-list">
     <app-album-list-item *ngFor="let album of albums" [album]="album" (pressed)="itemPressed($event)"></app-album-list-item>
+    <h1 *ngIf="!albums || !albums.length" class="not-found">Este artista no tiene álbumes todavía<br>:(</h1>
 </div>
