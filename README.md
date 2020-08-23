@@ -1,7 +1,7 @@
 # 🎧 Kenjobeat
 An Angular 10 application for registering music albums and artists.
 <p align="center">
-  <img src="https://github.com/baez97/Nightmare/blob/master/src/assets/list.png"/>
+  <img width="700px" src="https://github.com/baez97/kenjobeat/blob/master/src/assets/screenshots/list.png"/>
 </p>
 
 ## 👀 Overview
@@ -14,24 +14,24 @@ edit the current ones or delete them.
 If you hover over that white search button on the top right corner, a search bar is shown. As you type on it, the list will
 be updated to show only those albums and artists that are related to your search.
 <p align="center">
-  <img src="https://github.com/baez97/Nightmare/blob/master/src/assets/search.png"/>
+  <img width="700px" src="https://github.com/baez97/kenjobeat/blob/master/src/assets/screenshots/search.png"/>
 </p>
 
-## 🚀 The modal
+## 🚀 The modal
 If you click on an item of the list, a modal will show you more details about it. You will also be able to modify or delete
 that item by clicking on the pencil or the trash button.
 
 The modal also allows you to navigate from artist to album and viceversa, by clicking on the name of the album and in the
 left arrow icon.
 <p align="center">
-  <img src="https://github.com/baez97/Nightmare/blob/master/src/assets/toggle.gif"/>
+  <img width="700px" src="https://github.com/baez97/kenjobeat/blob/master/src/assets/screenshots/toggle.gif"/>
 </p>
 
 ## 🍞 The snack
 A friendly snack bar will appear on the bottom of the screen to give you feedback about your actions. It will tell
 you if everything went well, and advise when a problem occured.
 <p align="center">
-  <img src="https://github.com/baez97/Nightmare/blob/master/src/assets/snack.gif"/>
+  <img width="700px" src="https://github.com/baez97/kenjobeat/blob/master/src/assets/screenshots/snack.gif"/>
 </p>
 
 ## 👨🏻‍💻 About the implementation
