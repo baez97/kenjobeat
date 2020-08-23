@@ -14,5 +14,12 @@
         (editAlbumPressed)="editAlbumPressed($event)"
         (editAlbum)="editAlbum($event)"
         (editArtistPressed)="editArtistPressed($event)"
-        (editArtist)="editArtist($event)"></app-modal>
+        (editArtist)="editArtist($event)"
+        (deleteAlbumPressed)="deleteAlbumPressed($event)"
+        (deleteArtistPressed)="deleteArtistPressed($event)"></app-modal>
 </div>
+<app-snack [opened]="snackOpened" [error]="snackError" 
+    [message]="snackMessage" (close)="hideSnack()"></app-snack>
+<app-snack [opened]="confirmationOpened" [error]="false" 
+    [message]="confirmationMessage" [yesNo]="true" (close)="hideConfirmation()"
+    (accept)="deleteConfirmed()"></app-snack>

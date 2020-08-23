@@ -19,6 +19,14 @@ export class AppComponent implements OnInit{
   openedArtist: Artist;
   openedAlbum: Album;
 
+  snackOpened: boolean = false;
+  snackMessage: string = '';
+  snackError: boolean = false;
+
+  confirmationOpened: boolean = false;
+  confirmationMessage: string = '';
+  itemToDelete: Album | Artist;
+
   constructor(private artistsService: ArtistsService,
     private albumsService: AlbumsService) { }
 
@@ -89,27 +97,105 @@ export class AppComponent implements OnInit{
     this.mode = 'edit';
   }
 
+  deleteAlbumPressed(album: Album) {
+    this.confirmationOpened = true;
+    this.itemToDelete = album;
+    this.confirmationMessage = '¿Eliminar el álbum?';
+  }
+
+  deleteArtistPressed(artist: Artist) {
+    this.confirmationOpened = true;
+    this.itemToDelete = artist;
+    this.confirmationMessage = '¿Eliminar el artista?';
+  }
+
+  hideConfirmation() {
+    this.confirmationOpened = false;
+  }
+
+  deleteConfirmed() {
+    if ( isAlbum(this.itemToDelete) )
+      this.deleteAlbum(this.itemToDelete);
+    else
+      this.deleteArtist(this.itemToDelete);
+  }
+
   async createAlbum(album) {
-    await this.albumsService.createAlbum(album);
-    this.retrieveData();
-    this.closeModal();
+    try {
+      await this.albumsService.createAlbum(album);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Álbum creado correctamente', false);
+    } catch(e) {
+      this.showSnack('Error al crear el álbum', true);
+    }
   }
 
   async createArtist(artist) {
-    await this.artistsService.createArtist(artist);
-    this.retrieveData();
-    this.closeModal();
+    try {
+      await this.artistsService.createArtist(artist);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Artista creado correctamente', false);
+    } catch(_) {
+      this.showSnack('Error al crear el artista', true);
+    }
   }
 
   async editAlbum(album: Album) {
-    await this.albumsService.editAlbum(album);
-    this.retrieveData();
-    this.closeModal();
+    try {
+      await this.albumsService.editAlbum(album);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Álbum editado correctamente', false);
+    } catch(_) {
+      this.showSnack('Error al editar el álbum', true);
+    }
   }
 
   async editArtist(artist: Artist) {
-    await this.artistsService.editArtist(artist);
-    this.retrieveData();
-    this.closeModal();
+    try {
+      await this.artistsService.editArtist(artist);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Artista editado correctamente', false);
+    } catch(_) {
+      this.showSnack('Error al editar el artista', true);
+    }
   }
+
+  async deleteArtist(artist: Artist) { 
+    this.hideConfirmation();
+    try {
+      await this.albumsService.deleteAlbumsFromArtist(artist._id);
+      await this.artistsService.deleteArtist(artist);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Artista eliminado correctamente', false);
+    } catch(_) {
+      this.showSnack('Error al eliminar el artista', true);
+    } 
+  }
+  async deleteAlbum(album: Album) { 
+    this.hideConfirmation();
+    try {
+      await this.albumsService.deleteAlbum(album);
+      this.retrieveData();
+      this.closeModal();
+      this.showSnack('Álbum eliminado correctamente', false);
+    } catch(_) {
+      this.showSnack('Error al eliminar el álbum', true);
+    }
+  }
+
+  showSnack(message: string, error: boolean) {
+    this.snackMessage = message;
+    this.snackError = error;
+    this.snackOpened = true;
+  }
+
+  hideSnack() {
+    this.snackOpened = false;
+  }
+
 }

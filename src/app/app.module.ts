@@ -22,6 +22,7 @@ import { AlbumListComponent } from './components/album-list/album-list.component
 import { AlbumListItemComponent } from './components/album-list-item/album-list-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditCreatePipe } from './pipes/edit-create.pipe';
+import { SnackComponent } from './components/snack/snack.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditCreatePipe } from './pipes/edit-create.pipe';
     ArtistModalComponent,
     AlbumListComponent,
     AlbumListItemComponent,
-    EditCreatePipe
+    EditCreatePipe,
+    SnackComponent
   ],
   imports: [
     BrowserModule,

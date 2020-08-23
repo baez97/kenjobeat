@@ -1,0 +1,84 @@
+.snack-container {
+    position: fixed;
+    bottom: -100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s ease;
+    z-index: 21;
+    .snack {
+        pointer-events: visible;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 50px;
+        width: 80%;
+        max-width: 550px;
+        background-color: var(--primary-blue);
+        color: var(--primary-gray);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        h3 {
+            font-weight: 900;
+        }
+        button {
+            background-color: var(--primary-gray);
+            font-weight: 900;
+            padding: 5px 30px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 20px;
+            color: var(--primary-blue);
+            &:hover {
+                background-color: #534f66;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+        div {
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+            button {
+                padding: 10px;
+                margin: auto 5px;
+            }
+
+            button.cancel {
+                background-color: var(--primary-blue);
+                color: var(--primary-gray);
+
+                &:hover {
+                    background-color: #61b5b8;
+                }
+            }
+        }
+    }
+    .snack.error {
+        background-color: #d37887;
+        button {
+            color: #d37887;
+        }
+    }
+}
+
+.snack-container.opened {
+    bottom: 100px;
+    opacity: 1;
+}
+
+@media(max-width: 767px) {
+    .snack-container {
+        .snack {
+            flex-direction: column;
+            align-items: center;
+            padding-left: 0;
+            padding-bottom: 10px;
+        }
+    }
+}

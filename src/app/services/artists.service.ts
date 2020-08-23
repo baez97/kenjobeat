@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Artist } from '../model/artist';
 import { HttpClient } from '@angular/common/http';
+import { AlbumsService } from './albums.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistsService {
 
-  // baseUrl = 'http://localhost:3000'
-  baseUrl = 'http://192.168.1.128:3000';
-
+  baseUrl = 'http://localhost:3000'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -38,6 +37,11 @@ export class ArtistsService {
 
   async editArtist(artist: Artist): Promise<Artist> {
     const result = await this.httpClient.put(this.baseUrl + '/artist/' + artist._id, artist).toPromise();
+    return result as Artist;
+  }
+
+  async deleteArtist(artist: Artist): Promise<Artist> {
+    const result = await this.httpClient.delete(this.baseUrl + '/artist/' + artist._id).toPromise();
     return result as Artist;
   }
 }

@@ -1,0 +1,10 @@
+<div class="snack-container" [ngClass]="{ opened: opened }">
+    <div class="snack" [ngClass]="{ error: error }">
+        <h3>{{ message }}</h3>
+        <div>
+            <button *ngIf="!yesNo" (click)="closePressed()">Okey</button>
+            <button *ngIf="yesNo" (click)="acceptPressed()">Confirmar</button>
+            <button *ngIf="yesNo" class="cancel" (click)="closePressed()">Cancelar</button>
+        </div>
+    </div>
+</div>

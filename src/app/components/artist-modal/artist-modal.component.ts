@@ -11,6 +11,7 @@ import { ArtistsService } from 'src/app/services/artists.service';
   styleUrls: ['./artist-modal.component.scss']
 })
 export class ArtistModalComponent implements OnInit {
+
   artist: Artist;
   @Input('artist') set setArtist(value: Artist) {
     this.artist = value;
@@ -27,11 +28,25 @@ export class ArtistModalComponent implements OnInit {
       });
   }
 
+  /**
+   * Depending on the mode (create, edit or read), the modal will display 
+   * an empty form, an already filled form or just information, respectively.
+   */
   @Input('mode') mode: 'create' | 'edit' | 'read';
+
   @Output('toggle') toggleEvent = new EventEmitter<Album>();
-  @Output('createArtist') createArtistEvent = new EventEmitter<Artist>();
-  @Output('editArtist') editArtistEvent = new EventEmitter<Artist>();
+
+  // Interaction events
+  /** Event triggered when the edit button is pressed */
   @Output('editPressed') editArtistPressedEvent = new EventEmitter<Artist>();
+  /** Event triggered when the delete button is pressed */
+  @Output('deletePressed') deletePressedEvent = new EventEmitter<Artist>();
+
+  // Submit events
+  /** Event triggered when the creation form has been submitted */
+  @Output('createArtist') createArtistEvent = new EventEmitter<Artist>();
+  /** Event triggered when the edition form has been submitted */
+  @Output('editArtist') editArtistEvent = new EventEmitter<Artist>();
 
   artistForm: FormGroup;
   albums: Array<Album>;
@@ -61,7 +76,12 @@ export class ArtistModalComponent implements OnInit {
     });
   }
 
-  getDateString(rawDate: string) {
+  /**
+   * Returns a string with the given date in a form-compatible format
+   * (YYYY-MM-DD) Example: 2012-02-15
+   * @param rawDate A date string compatible with a Date object.
+   */
+  getDateString(rawDate: string): string {
     if ( !rawDate ) return '';
 
     let date = new Date(rawDate);
@@ -80,6 +100,10 @@ export class ArtistModalComponent implements OnInit {
     this.toggleEvent.emit(album);
   }
 
+  /**
+   * Calls to the creation or edition method depending on the value of the
+   * mode variable.
+   */
   submit() {
     if ( this.mode === 'create' )
       this.createArtist();
@@ -92,11 +116,14 @@ export class ArtistModalComponent implements OnInit {
   }
 
   editArtist() {
-    console.log('artist-modal');
     this.editArtistEvent.emit(this.artist);
   }
 
   editPressed() {
     this.editArtistPressedEvent.emit(this.artist);
+  }
+
+  deletePressed() {
+    this.deletePressedEvent.emit(this.artist);
   }
 }

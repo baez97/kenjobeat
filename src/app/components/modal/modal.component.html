@@ -5,13 +5,15 @@
             (toggle)="toggleToArtist($event)" [mode]="mode"
             (createAlbum)="createAlbum($event)"
             (editPressed)="editAlbumPressed($event)"
-            (editAlbum)="editAlbum($event)"></app-album-modal>
+            (editAlbum)="editAlbum($event)"
+            (deletePressed)="deleteAlbumPressed($event)"></app-album-modal>
         <app-artist-modal *ngIf="artist" [artist]="artist" 
             class="inner-modal" [ngClass]="{ show: !currentIsAlbum }"
             (toggle)="toggleToAlbum($event)" [mode]="mode"
             (createArtist)="createArtist($event)"
             (editPressed)="editArtistPressed($event)"
-            (editArtist)="editArtist($event)"></app-artist-modal>
+            (editArtist)="editArtist($event)"
+            (deletePressed)="deleteArtistPressed($event)"></app-artist-modal>
     </div>
     <div class="modal-back" [ngClass]="{closed: !open}" (click)="closeModal()"></div>
 </div>

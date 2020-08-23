@@ -1,8 +1,8 @@
 <div *ngIf="artist" class="artist-modal">
-    <img [src]="artist.photoUrl" onerror="this.src='../../../assets/album.svg'"/>
+    <img [src]="artist.photoUrl" onerror="this.src='../../../assets/artist.svg'"/>
     <div class="buttons-container">
         <button class="edit top-button" (click)="editPressed()"></button>
-        <button class="delete top-button"></button>
+        <button class="delete top-button" (click)="deletePressed()"></button>
     </div>
     <div *ngIf="mode === 'read'" class="modal-content">
         <h1>{{ artist.name }}</h1>

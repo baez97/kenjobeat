@@ -20,6 +20,15 @@
             background-color: #e2e2e2;
         }
     }
+
+    .dropdown-item.artist {
+        background: url(../../../assets/artist.svg) no-repeat;
+        background-size: 40px 40px;
+        background-position: 20px center;
+        &:hover {
+            background-color: #e2e2e2;
+        }
+    }
     
 }
 
