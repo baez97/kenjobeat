@@ -31,6 +31,7 @@ export class ArtistsService {
   }
 
   async createArtist(artist: Artist): Promise<Artist> {
+    delete artist._id;
     const result = await this.httpClient.post(this.baseUrl + '/artist', artist).toPromise();
     return result as Artist;
   }
